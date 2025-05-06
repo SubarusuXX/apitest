@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gatofatos</title>
+    <title>GatoWiki</title>
     <style>
         body {
             background-image: url(catfundo2.jpg);
@@ -21,44 +21,65 @@
         }
 
         #texto {
+            position: absolute;
             color: white;
-            text-align: right;
-            background-color: rgba(121, 0, 202, 0.5); 
+            text-align: left;
+            background-color: rgba(60, 10, 94, 0.5);
             padding: 15px;
             border-radius: 10px;
-            max-width: 20%; /* Evita que o texto fique muito largo */
-            margin-right: 500px; /* Distância da borda direita */
-        }
+            max-width: 20%; /* limita horizontalmente o texto */
+            margin-right: 400px; /*borda direita */
+            top: 9.1cm;
+        } /*  */
 
         button {
-            font-size: 20px;
-            border: none;
-            border-radius: 15px;
+            position: absolute;
+            font-size: 20px; /* taamanho */
+            border: none; /* tira a borda padrao */
+            border-radius: 15px; /* para ficar mais arredondado */
             background-color: #000000;
             color: white;
             cursor: pointer;
-            transition: all 0.3s;
-            padding: 10px 20px;
-            margin-right: 20cm; 
+            transition: all 1.0s;
+            padding: 10px 20px; /* tamanho da borda */
+            margin-right: 25cm;
+            position: absolute;
+            top: 10cm;
         }
         
         button:hover {
             background-color: blueviolet;
-            transform: scale(2.5);
+            transform: scale(1.5);
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;  /* Alinha itens à direita dentro do container */
-            gap: 100px;  /* Espaço entre texto e botão */
+            display: flex; /* deixa flexivel, la ele, melhor liberdade */
+            flex-direction: column; /* organiza verticalmente */
+            align-items: flex-end;  /* Alinha itens ah direita dentro da minha indentacao*/
+            gap: 100px;  /* espaço entre texto e botaum */
+            margin-right: 100px;
+        }
+        .titulo{
+        color: white;
+        position: absolute;
+        top: 20px; /* para o topo */
+        left: 40%; /* centraliza mior*/
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
+    
     <div class="container">
-        <h2 id="texto">Saiba de uma curiosidade felina apertando o botaum</h2>
+        <h1 class="titulo">SEJA BEM VINDO A MIAWIKI</h1>
         <button onclick="getData()">Click-me</button>
+        <h2 id="texto">Saiba de uma curiosidade felina apertando o botaum</h2>
+        
     </div>
     
     <script>
