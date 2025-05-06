@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+</head>
+
+<body>
+    /* Comentário dentro de uma regra */
+    
+ <h2 id="texto">Texto que vai mudar através da busca na API</h2>
+ <button onclick="getData()">Buscar da API</button>
+ <script>
+  async function getData() {
+   const url = "https://meowfacts.herokuapp.com/?";
+   try {
+    const response = await fetch(url);
+    if (!response.ok) {
+     throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    document.getElementById("texto").innerHTML = json.data;
+   } catch (error) {
+    console.error(error.message);
+   }
+  }
+  
+ </script>
+</body>
+</html>
