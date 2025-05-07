@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GatoWiki</title>
+    <style>
+        body {
+            background-image: url(catfundo2.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #texto {
+            position: absolute;
+            color: white;
+            text-align: left;
+            background-color: rgba(60, 10, 94, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 20%; /* limita horizontalmente o texto */
+            margin-right: 400px; /*borda direita */
+            top: 9.1cm;
+        } /*  */
+
+        button {
+            position: absolute;
+            font-size: 20px; /* taamanho */
+            border: none; /* tira a borda padrao */
+            border-radius: 15px; /* para ficar mais arredondado */
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            transition: all 1.0s;
+            padding: 10px 20px; /* tamanho da borda */
+            margin-right: 25cm;
+            position: absolute;
+            top: 10cm;
+        }
+        
+        button:hover {
+            background-color: rgb(115, 31, 194);
+            transform: scale(2.5);
+        }
+
+        .container {
+            display: flex; /* deixa flexivel, la ele, melhor liberdade */
+            flex-direction: column; /* organiza verticalmente */
+            align-items: flex-end;  /* Alinha itens ah direita dentro da minha indentacao*/
+            gap: 100px;  /* espaço entre texto e botaum */
+            margin-right: 100px;
+        }
+        .titulo{
+        color: white;
+        position: absolute;
+        top: 20px; /* para o topo */
+        left: 40%; /* centraliza mior*/
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+        }
+        .minitx{
+            color: white;
+            position: absolute;
+            top: 20cm;
+            left: 20cm;
+            text-shadow: 10px 15px 10px rgba(255, 255, 255, 0.5);;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="titulo">SEJA BEM VINDO A MIAWIKI</h1>
+        <button onclick="getData()">Click-me</button>
+        <h2 id="texto">Saiba de uma curiosidade felina apertando o botaum</h2>
+        <h2 class="minitx">Senhor bigodes 1982-1994</h2>
+        
+    </div>
+    
+    <script>
+        async function getData() {
+            const url = "https://meowfacts.herokuapp.com/?";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Erro: ${response.status}`);
+                }
+                const json = await response.json();
+                document.getElementById("texto").innerHTML = json.data[0];
+            } catch (error) {
+                console.error(error.message);
+                document.getElementById("texto").innerHTML = "Erro ao carregar o fato felino";
+            }
+        } 
+    </script>
+</body>
+</html>
