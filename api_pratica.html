@@ -9,28 +9,21 @@
             background-image: url(catfundo2.jpg);
             background-repeat: no-repeat;
             background-position: center;
-            background-attachment: fixed;
-            background-size: cover;
-            margin: 0;
-            min-height: 100vh;
-            
-            /* Flexbox para alinhar à direita e centralizar verticalmente */
-            display: flex;
-            justify-content: flex-end;   /* Alinha à direita */
-            align-items: center;        /* Centraliza verticalmente */
+            background-attachment: fixed; /*  fique fixa durante o scroll da pagina */
+            background-size: cover; /* cobre toda a area do body */
         }
 
         #texto {
             position: absolute;
-            color: white;
-            text-align: left;
+            color: rgb(255, 255, 255);
+            text-align: left; /* texto posicionado a esquerda na borda */
             background-color: rgba(60, 10, 94, 0.5);
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 15px;
             max-width: 20%; /* limita horizontalmente o texto */
             margin-right: 400px; /*borda direita */
             top: 9.1cm;
-        } /*  */
+        } /*  ( ͡° ͜ʖ ͡°)  */
 
         button {
             position: absolute;
@@ -38,39 +31,48 @@
             border: none; /* tira a borda padrao */
             border-radius: 15px; /* para ficar mais arredondado */
             background-color: #000000;
-            color: white;
+            color: rgb(255, 255, 255);
             cursor: pointer;
             transition: all 1.0s;
             padding: 10px 20px; /* tamanho da borda */
             margin-right: 25cm;
-            position: absolute;
             top: 10cm;
         }
-        
-        button:hover {
-            background-color: blueviolet;
+        button:hover { /* estado especial quando o mouse esta encima dele */
+            background-color: rgb(138, 43, 226);
             transform: scale(1.5);
         }
 
         .container {
-            display: flex; /* deixa flexivel, la ele, melhor liberdade */
+            display: flex; /* deixa flexivel, la ele, liberdade  */
             flex-direction: column; /* organiza verticalmente */
-            align-items: flex-end;  /* Alinha itens ah direita dentro da minha indentacao*/
-            gap: 100px;  /* espaço entre texto e botaum */
-            margin-right: 100px;
+            align-items: flex-end;  /* Alinha itens ah direita, botao e texto apenas*/
+            margin-right: 100px; /* centralizado */
         }
+
         .titulo{
-        color: white;
+        color: rgb(255, 255, 255);
         position: absolute;
-        top: 20px; /* para o topo */
+        top: 40px; /* para o topo */
         left: 40%; /* centraliza mior*/
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(60, 10, 94, 0.5);
         padding: 15px;
         border-radius: 10px;
         text-align: center;
-        white-space: nowrap; /* Impede que o texto quebre em várias linhas */
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        white-space: nowrap; /* impede que o texto quebre em várias linhas */
         }
+
+        #contador{
+            color: white;
+            position: absolute;
+            top: 12cm;
+            right: 28.2cm;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 4px 10px;
+            border-radius: 10px; /* bordinho arredondado */
+        }
+
     </style>
 </head>
 <body>
@@ -79,11 +81,18 @@
         <h1 class="titulo">SEJA BEM VINDO A MIAWIKI</h1>
         <button onclick="getData()">Click-me</button>
         <h2 id="texto">Saiba de uma curiosidade felina apertando o botaum</h2>
-        
+        <div id="contador">Cliques: 0</div>
     </div>
     
     <script>
+        let contadorCliques = 0;
+
         async function getData() {
+        
+            contadorCliques++;
+            document.getElementById("contador").textContent = `Cliques: ${contadorCliques}`;
+            
+
             const url = "https://meowfacts.herokuapp.com/?";
             try {
                 const response = await fetch(url);
@@ -96,7 +105,7 @@
                 console.error(error.message);
                 document.getElementById("texto").innerHTML = "Erro ao carregar o fato felino";
             }
-        } 
+        }
     </script>
 </body>
 </html>
